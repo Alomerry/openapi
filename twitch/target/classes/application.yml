@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: common
+    include: local
   session:
     store-type: redis
 logging:

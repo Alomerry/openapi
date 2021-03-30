@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface MemberDao extends MongoRepository<User, ObjectId> {
 
-    User findByNameAndPasswdAndIsDeleted(String name, String passwd, boolean isDeleted);
-
-    User findByNameAndIsDeleted(String name, boolean isDeleted);
+//    User findByNameAndPasswdAndIsDeleted(String name, String passwd, boolean isDeleted);
+//
+//    User findByNameAndIsDeleted(String name, boolean isDeleted);
 }

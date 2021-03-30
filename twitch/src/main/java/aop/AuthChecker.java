@@ -30,7 +30,7 @@ import java.util.stream.Stream;
 @Component
 public class AuthChecker {
 
-    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/login", "/register").collect(Collectors.toCollection(HashSet<String>::new));
+    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register").collect(Collectors.toCollection(HashSet<String>::new));
 
     @AfterReturning(pointcut = "execution(* controller.*.*(..))", returning = "returnValue")
     public void ControllerLog(JoinPoint joinPoint, Object returnValue) throws NoSuchMethodException {
