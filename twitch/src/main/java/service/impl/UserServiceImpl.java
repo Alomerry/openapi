@@ -1,8 +1,10 @@
 package service.impl;
 
 import dao.MemberDao;
+import dao.UserDao;
 import exception.base.InvalidParameterException;
-import model.member.po.User;
+import model.user.po.User;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import service.UserService;
 
@@ -10,15 +12,15 @@ import javax.annotation.Resource;
 
 @Service
 public class UserServiceImpl implements UserService {
-//    @Resource
-//    private MemberDao memberDao;
+    @Resource
+    private UserDao userDao;
 
     public boolean Login(String userName, String passwd) {
-//        User member = memberDao.findByNameAndPasswdAndIsDeleted(userName, passwd, false);
-//        if (member != null)
-//            return true;
-//        else
-        return false;
+        User user = userDao.findByNameAndPasswordAndIsDeleted(userName, passwd, false);
+        if (user != null)
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -36,7 +38,16 @@ public class UserServiceImpl implements UserService {
     }
 
     public User FindUserByName(String userName) {
-//        return memberDao.findByNameAndIsDeleted(userName, false);
-        return null;
+        return userDao.findByNameAndIsDeleted(userName, false);
+    }
+
+    @Override
+    public User FindByUserId(String userId) {
+        return userDao.findBy_id(userId);
+    }
+
+    @Override
+    public User SaveUser(User user) {
+        return userDao.save(user);
     }
 }
