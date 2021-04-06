@@ -10,7 +10,7 @@
           <Button type="success" @click="copyText()">复制</Button>
         </FormItem>
         <FormItem>
-          <Button type="warning" @click="getDanmakuUrl()">生成</Button>
+          <Button type="warning" disabled @click="">生成</Button>
         </FormItem>
         <!--        <FormItem>-->
         <!--          <Button type="success">Success</Button>-->
