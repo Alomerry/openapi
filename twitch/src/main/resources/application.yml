@@ -17,6 +17,6 @@ server:
   servlet:
     session:
       timeout: 30m
-    context-path: /v1
+    context-path: /api/v1
   max-http-header-size: 10240000
   maxHttpHeaderSize: 102400

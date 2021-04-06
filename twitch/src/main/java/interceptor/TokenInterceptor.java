@@ -24,7 +24,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         /** 地址过滤 */
         String uri = request.getRequestURI();
         // todo
-        if (uri.contains("/login") || uri.contains("/register")||uri.contains("/error")|| uri.contains("swagger")||uri.contains("api")) {
+        if (uri.contains("/login") || uri.contains("/register") || uri.contains("/error") || uri.contains("swagger") || uri.contains("api")) {
             return true;
         }
         /** Token 验证 */

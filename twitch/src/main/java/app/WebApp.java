@@ -13,7 +13,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 @SpringBootApplication()
 @EnableScheduling // 开启定时任务功能
 @EnableMongoAuditing
-@ComponentScan({"controller", "service", "config", "interceptor","aop","task"})
+@ComponentScan({"controller", "service", "config", "interceptor", "aop", "task", "component"})
 @EnableMongoRepositories("dao")
 @EnableOpenApi
 @EnableConfigurationProperties({

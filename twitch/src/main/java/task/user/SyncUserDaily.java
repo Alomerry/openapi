@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class SyncUserDaily {
     @Scheduled(cron = "*/15 * * * * ?")
     public void execute() {
-        System.out.println("测试任务");
+//        System.out.println("测试任务");
     }
 }

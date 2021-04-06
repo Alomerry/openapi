@@ -1,15 +1,19 @@
 package aop;
 
+import config.JwtConfig;
 import core.Result;
 import core.ResultCode;
 import interceptor.annotation.AuthCheck;
 import interceptor.annotation.RequiredType;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.SignatureException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +34,10 @@ import java.util.stream.Stream;
 @Component
 public class AuthChecker {
 
-    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/login", "/register").collect(Collectors.toCollection(HashSet<String>::new));
+    @Autowired
+    private JwtConfig jwtConfig;
+
+    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register", "/login", "/validateDanmakuUrl","/users/{id}").collect(Collectors.toCollection(HashSet<String>::new));
 
     @AfterReturning(pointcut = "execution(* controller.*.*(..))", returning = "returnValue")
     public void ControllerLog(JoinPoint joinPoint, Object returnValue) throws NoSuchMethodException {
@@ -41,13 +48,18 @@ public class AuthChecker {
     }
 
     @Around("@annotation(interceptor.annotation.AuthCheck)")
-    public Object checkAuthCheckByAnnotation(ProceedingJoinPoint joinPoint) throws NoSuchMethodException {
+    public Object checkAuthCheckByAnnotation(ProceedingJoinPoint joinPoint) {
         Class<?> clasz = joinPoint.getTarget().getClass();
         String methodName = joinPoint.getSignature().getName();
 //        logger.info("拦截方法[{}]成功", methodName);
         Class[] argClass = ((MethodSignature) joinPoint.getSignature()).getParameterTypes();
 
-        Method method = clasz.getMethod(methodName, argClass);
+        Method method = null;
+        try {
+            method = clasz.getMethod(methodName, argClass);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
 
         AuthCheck acer = null;
 
@@ -127,7 +139,17 @@ public class AuthChecker {
                 System.out.println("需要验证 token");
                 RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
                 HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-                System.out.println(request.getHeader("accessToken"));
+                String token = request.getHeader("accessToken");
+                System.out.println("token:" + token);
+                try {
+                    Claims claims = jwtConfig.getTokenClaim(token);
+                    if (claims == null || jwtConfig.isTokenExpired(claims.getExpiration())) {
+                        throw new SignatureException("令牌过期，请重新登录。");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new SignatureException("令牌失效，请重新登录。");
+                }
             }
         }
         System.out.println("token 验证完毕");
@@ -148,13 +170,13 @@ public class AuthChecker {
 
     private String getMapperPath(Annotation annotation) {
         if (annotation instanceof PostMapping) {
-            return ((PostMapping) annotation).name();
+            return ((PostMapping) annotation).value()[0];
         }
         if (annotation instanceof RequestMapping) {
-            return ((RequestMapping) annotation).name();
+            return ((RequestMapping) annotation).value()[0];
         }
         if (annotation instanceof GetMapping) {
-            return ((GetMapping) annotation).name();
+            return ((GetMapping) annotation).value()[0];
         }
 
         // todo
@@ -162,6 +184,7 @@ public class AuthChecker {
     }
 
     private boolean needCheckToken(String path) {
+        System.out.println("CheckTokenUrl:" + path);
         return !NO_NEED_CHECK_AUTH_PATHS.contains(path);
     }
 }
