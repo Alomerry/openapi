@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <p class="page_title">alertbox</p>
+    <p class="page_title">提醒框（待开发）</p>
   </div>
 </template>
 <script>

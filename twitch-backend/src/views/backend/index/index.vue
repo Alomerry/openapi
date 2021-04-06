@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <p class="page_title">606 page not found</p>
+    <p class="page_title">Twitch 弹幕姬</p>
   </div>
 </template>
 <script>

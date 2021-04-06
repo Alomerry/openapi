@@ -72,8 +72,8 @@
             <p
               class="page-login--options"
               flex="main:justify cross:center">
-              <span><d2-icon name="question-circle"/> 忘记密码</span>
-              <span>注册用户</span>
+              <span @click="$Message.info({content:'开发中'})"><d2-icon name="question-circle"/> 忘记密码</span>
+              <span @click="$Message.info({content:'开发中'})">注册用户</span>
             </p>
             <!-- quick login -->
             <!--            <el-button class="page-login&#45;&#45;quick" size="default" type="info" @click="dialogVisible = true">-->
