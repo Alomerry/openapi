@@ -12,6 +12,7 @@ import model.user.vo.LoginRequest;
 import model.user.vo.LoginResponse;
 import model.member.vo.RegisterRequest;
 import model.user.po.User;
+import model.user.vo.ValidateDanmakuUrlResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -81,10 +82,10 @@ public class UserController extends BaseController {
         return user;
     }
 
-    @GetMapping(value = "/validateDanmakuUrl")
-    public Object validateDanmakuUrl(@RequestParam(value = "danmakuUrl", defaultValue = "") String danmakuUrl) throws Exception {
+    @GetMapping(value = "/danmaku/validate")
+    public ValidateDanmakuUrlResponse validateDanmakuUrl(@RequestParam(value = "danmakuUrl", defaultValue = "") String danmakuUrl) throws Exception {
         if (jedisUtil.hexists(STREAMER_DANMAKU_URL_KEY, danmakuUrl)) {
-            return true;
+            return new ValidateDanmakuUrlResponse(jedisUtil.hget(STREAMER_DANMAKU_URL_KEY, danmakuUrl));
         }
         throw new InvalidParameterException("url 不存在", null);
     }

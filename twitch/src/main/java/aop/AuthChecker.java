@@ -37,7 +37,7 @@ public class AuthChecker {
     @Autowired
     private JwtConfig jwtConfig;
 
-    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register", "/login", "/validateDanmakuUrl","/users/{id}").collect(Collectors.toCollection(HashSet<String>::new));
+    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register", "/login", "/danmaku/validate","/users/{id}").collect(Collectors.toCollection(HashSet<String>::new));
 
     @AfterReturning(pointcut = "execution(* controller.*.*(..))", returning = "returnValue")
     public void ControllerLog(JoinPoint joinPoint, Object returnValue) throws NoSuchMethodException {
