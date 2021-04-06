@@ -42,7 +42,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return value;
     }
@@ -65,7 +65,7 @@ public class JedisUtil {
         } catch (Exception e) {
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return value;
     }
@@ -90,7 +90,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return "0";
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -114,7 +114,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return "0";
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -134,7 +134,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -156,7 +156,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -178,7 +178,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -200,7 +200,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -221,7 +221,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return false;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -238,7 +238,7 @@ public class JedisUtil {
         } catch (Exception e) {
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -260,7 +260,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -284,7 +284,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -306,7 +306,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return -1L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -329,7 +329,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -353,7 +353,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -378,7 +378,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -403,7 +403,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -449,7 +449,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
     }
 
@@ -471,7 +471,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return values;
     }
@@ -500,7 +500,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -529,7 +529,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -553,7 +553,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -578,7 +578,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -601,7 +601,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -625,7 +625,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -648,7 +648,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -672,7 +672,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -695,7 +695,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -720,7 +720,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -745,7 +745,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -770,7 +770,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -794,7 +794,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -819,7 +819,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -844,7 +844,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -868,7 +868,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -891,7 +891,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
 
@@ -916,7 +916,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -939,7 +939,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -962,7 +962,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -985,7 +985,7 @@ public class JedisUtil {
         } catch (Exception e) {
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1010,7 +1010,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1034,7 +1034,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1061,7 +1061,7 @@ public class JedisUtil {
 //
 //            log.error(e.getMessage());
 //        } finally {
-//            returnResource(jedisPool, jedis);
+//            jedis.close();
 //        }
 //        return res;
 //    }
@@ -1089,7 +1089,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1114,7 +1114,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1139,7 +1139,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1162,7 +1162,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1186,7 +1186,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1214,7 +1214,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1238,7 +1238,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1261,7 +1261,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1290,7 +1290,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1314,7 +1314,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -1337,7 +1337,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -1359,7 +1359,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -1383,7 +1383,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1407,7 +1407,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1430,7 +1430,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1456,7 +1456,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1483,7 +1483,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1506,7 +1506,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1530,7 +1530,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1553,7 +1553,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1577,7 +1577,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1602,7 +1602,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1625,7 +1625,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1649,7 +1649,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1672,7 +1672,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1695,7 +1695,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1723,7 +1723,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1747,7 +1747,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return null;
     }
@@ -1772,7 +1772,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
 
     }
@@ -1801,7 +1801,7 @@ public class JedisUtil {
 //            log.error(e.getMessage());
             return 0L;
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
 
     }
@@ -1825,7 +1825,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1850,7 +1850,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1877,7 +1877,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1904,7 +1904,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1935,7 +1935,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1960,7 +1960,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -1985,7 +1985,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2010,7 +2010,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2033,7 +2033,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2057,7 +2057,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2082,7 +2082,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2107,7 +2107,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2136,7 +2136,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2152,7 +2152,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2174,7 +2174,7 @@ public class JedisUtil {
 
 //            log.error(e.getMessage());
         } finally {
-            returnResource(jedisPool, jedis);
+            jedis.close();
         }
         return res;
     }
@@ -2216,18 +2216,4 @@ public class JedisUtil {
         }
         return null;
     }
-
-    /**
-     * 返还到连接池
-     *
-     * @param jedisPool
-     * @param jedis
-     */
-    public static void returnResource(JedisPool jedisPool, Jedis jedis) {
-        if (jedis != null) {
-            // TODO
-//            jedisPool.returnResource(jedis);
-        }
-    }
-
 }

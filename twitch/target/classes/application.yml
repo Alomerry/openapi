@@ -5,7 +5,7 @@ spring:
     store-type: redis
 logging:
   level:
-    root: debug
+    root: error
 server:
   port: 8088
   error:
