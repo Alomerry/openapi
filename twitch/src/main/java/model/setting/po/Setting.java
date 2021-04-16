@@ -1,6 +1,8 @@
-package model.member.po;
+package model.setting.po;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -10,20 +12,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @Document
-public class Member implements Serializable {
+public class Setting implements Serializable {
     @Id
     private String _id; // id
-    private String name; // 用户名
-    private String type; // 类型
-    private String bio; // 签名
     @CreatedDate
     private Date created_at;
     @LastModifiedDate
     private Date updated_at;
-    private String logo;
+    private DanmakuSetting danmakuSetting;
+    private ObjectId userId;
 
-    public Member(String name) {
-        this.name = name;
+    public Setting(String userId) {
+        this.userId = new ObjectId(userId);
     }
 }
+

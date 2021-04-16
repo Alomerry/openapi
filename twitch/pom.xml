@@ -140,13 +140,13 @@
                 </executions>
                 <configuration>
                     <mainClass>app.WebApp</mainClass>
-<!--                    <excludes>-->
-<!--                        <exclude>-->
-<!--                            <groupId>org.springframework.boot</groupId>-->
-<!--                            <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--                            <optional>true</optional>-->
-<!--                        </exclude>-->
-<!--                    </excludes>-->
+                    <!--                    <excludes>-->
+                    <!--                        <exclude>-->
+                    <!--                            <groupId>org.springframework.boot</groupId>-->
+                    <!--                            <artifactId>spring-boot-configuration-processor</artifactId>-->
+                    <!--                            <optional>true</optional>-->
+                    <!--                        </exclude>-->
+                    <!--                    </excludes>-->
                 </configuration>
             </plugin>
             <plugin>
