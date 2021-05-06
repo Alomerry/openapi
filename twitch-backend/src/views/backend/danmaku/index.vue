@@ -3,8 +3,22 @@
     <h2 slot="header">弹幕姬</h2>
     <Card>
       <Form inline label-position="left">
-        <FormItem :label-width="100" prop="password" label="弹幕姬超链接">
+        <FormItem :label-width="100" prop="password" label="弹幕姬超链接(代理)">
           <Input v-model="obsTwitchUrl" type="password" password style="width: 400px"/>
+        </FormItem>
+        <FormItem>
+          <Button type="success" @click="copyText()">复制</Button>
+        </FormItem>
+        <FormItem>
+          <Button type="warning" disabled @click="">生成</Button>
+        </FormItem>
+        <!--        <FormItem>-->
+        <!--          <Button type="success">Success</Button>-->
+        <!--        </FormItem>-->
+      </Form>
+      <Form inline label-position="left">
+        <FormItem :label-width="100" prop="password" label="弹幕姬超链接(直连)">
+          <Input v-model="obsTwitchNoProxyUrl" type="password" password style="width: 400px"/>
         </FormItem>
         <FormItem>
           <Button type="success" @click="copyText()">复制</Button>
@@ -29,6 +43,7 @@ export default {
   data() {
     return {
       obsTwitchUrl: "",
+      obsTwitchNoProxyUrl: "",
     }
   },
   mounted() {
@@ -38,6 +53,7 @@ export default {
     getDanmakuUrl() {
       this.$api.GET_DANMAKU_URL_AJAX(util.cookies.get('token')).then(res => {
         this.obsTwitchUrl = "https://chat.alomerry.com/#twitch:"+res.danmakuUrl;
+        this.obsTwitchNoProxyUrl = "https://chat.alomerry.com/chat.html#twitch:"+res.danmakuUrl;
       })
     },
     copyText() {
