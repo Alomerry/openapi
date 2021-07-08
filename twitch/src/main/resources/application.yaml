@@ -3,10 +3,10 @@ spring:
     include: local
   session:
     store-type: redis
-#  config:
-#    use-legacy-processing: true
   mvc:
     throw-exception-if-no-handler-found: true
+  config:
+    use-legacy-processing: true
 logging:
   level:
     root: debug
@@ -22,5 +22,5 @@ server:
     session:
       timeout: 30m
     context-path: /api/v1
-  max-http-header-size: 10240000
-  maxHttpHeaderSize: 102400
+    max-http-header-size: 10240000
+    maxHttpHeaderSize: 102400
