@@ -7,12 +7,9 @@ import interceptor.annotation.AuthCheck;
 import interceptor.annotation.RequiredType;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import model.user.vo.GetDanmakuUrlResponse;
-import model.user.vo.LoginRequest;
-import model.user.vo.LoginResponse;
-import model.member.vo.RegisterRequest;
+import model.user.vo.*;
 import model.user.po.User;
-import model.user.vo.ValidateDanmakuUrlResponse;
+import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +51,7 @@ public class UserController extends BaseController {
     }
 
     @PostMapping(value = "/register")
-    Object Register(@Valid @RequestBody RegisterRequest request, BindingResult result) throws Exception {
+    Object Register(@Valid @RequestBody String request, BindingResult result) throws Exception {
         return null;
     }
 
@@ -74,12 +71,16 @@ public class UserController extends BaseController {
     // todo not auth check
     @GetMapping(value = "/users/{id}")
     // todo return response
-    public User getUserById(@PathVariable String id) throws Exception {
+    public UserVO getUserById(@PathVariable String id) throws Exception {
         // todo check
         User user = userService.FindByUserId(id);
+        UserVO vo = new UserVO();
         user.setPassword("");
         user.setDanmakuUrl("");
-        return user;
+        // todo auto copy
+        BeanCopier beanCopier = BeanCopier.create(user.getClass(), vo.getClass(), false);
+        beanCopier.copy(user, vo, null);
+        return vo;
     }
 
     @GetMapping(value = "/danmaku/validate")

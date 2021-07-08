@@ -9,12 +9,12 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ResponseResultHandlerAdvice implements ResponseBodyAdvice {
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
-        System.out.println("returnType:" + returnType);
-        System.out.println("returnType:" + converterType);
+//        System.out.println("returnType:" + returnType);
+//        System.out.println("returnType:" + converterType);
         return true;
     }
 

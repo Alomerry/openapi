@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import service.UserService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;

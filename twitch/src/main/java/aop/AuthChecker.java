@@ -34,13 +34,12 @@ import java.util.stream.Stream;
 @Component
 public class AuthChecker {
 
+    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register", "/login", "/danmaku/validate", "/users/{id}", "/settings/{userId}").collect(Collectors.toCollection(HashSet<String>::new));
     @Autowired
     private JwtConfig jwtConfig;
 
-    final static Set<String> NO_NEED_CHECK_AUTH_PATHS = Stream.of("/getAK", "/register", "/login", "/danmaku/validate","/users/{id}").collect(Collectors.toCollection(HashSet<String>::new));
-
     @AfterReturning(pointcut = "execution(* controller.*.*(..))", returning = "returnValue")
-    public void ControllerLog(JoinPoint joinPoint, Object returnValue) throws NoSuchMethodException {
+    public void ControllerLog(JoinPoint joinPoint, Object returnValue){
         System.out.println("@AfterReturning：模拟日志记录功能...");
         System.out.println("@AfterReturning：目标方法为：" +
                 joinPoint.getSignature().getDeclaringTypeName() +
@@ -48,7 +47,7 @@ public class AuthChecker {
     }
 
     @Around("@annotation(interceptor.annotation.AuthCheck)")
-    public Object checkAuthCheckByAnnotation(ProceedingJoinPoint joinPoint) {
+    public Object checkAuthCheckByAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
         Class<?> clasz = joinPoint.getTarget().getClass();
         String methodName = joinPoint.getSignature().getName();
 //        logger.info("拦截方法[{}]成功", methodName);
@@ -72,19 +71,14 @@ public class AuthChecker {
                 return res;
             }
         }
-        try {
-            return joinPoint.proceed();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        return new Result().setCode(ResultCode.INTERNAL_SERVER_ERROR).setMessage("内部错误");
+        return joinPoint.proceed();
     }
 
     @Around("execution(* controller.*.*(..))")
     public Object checkAuthByURL(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("**  测试打印反射信息" + joinPoint.getSignature().getName() + "  **");
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
-        handleAnnotations(method.getAnnotations());
+//        handleAnnotations(method.getAnnotations());
         return joinPoint.proceed();
     }
 

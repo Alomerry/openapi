@@ -30,5 +30,17 @@ export default {
       component: _import('backend/danmaku'),
       meta: {...meta, title: '弹幕'}
     },
+    {
+      path: 'preview',
+      name: 'backend-components-preview',
+      component: _import('backend/preview'),
+      meta: {...meta, title: '预览'}
+    },
+    {
+      path: 'subtitles',
+      name: 'backend-components-subtitles',
+      component: _import('backend/subtitles'),
+      meta: {...meta, title: '字幕'}
+    },
   ]
 }
