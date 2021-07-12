@@ -10,15 +10,13 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
-@SpringBootApplication()
+@SpringBootApplication
 @EnableScheduling // 开启定时任务功能
 @EnableMongoAuditing
-@ComponentScan({"controller", "service", "config", "aop", "interceptor", "task", "component"})
+@ComponentScan({"controller", "service", "config", "aop", "interceptor", "task", "component.redis"})
 @EnableMongoRepositories("dao")
 @EnableOpenApi
-@EnableConfigurationProperties({
-        JwtConfig.class,
-})
+@EnableConfigurationProperties({JwtConfig.class})
 public class WebApp {
     public static void main(String[] args) {
         SpringApplication.run(WebApp.class, args);
